@@ -90,61 +90,31 @@ export default function Header() {
                 </NavLink>
               </li>
 
-              {isLoggedIn ? (
-                <li>
-                  <NavLink
-                    to="/Calendar"
-                    className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 ${
-                        isActive ? "text-[#27ff82]" : "text-white"
-                      } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
-                    }
-                  >
-                    Calendar
-                  </NavLink>
-                </li>
-              ) : (
-                <li>
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 ${
-                        isActive ? "text-[#27ff82]" : "text-white"
-                      } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
-                    }
-                  >
-                    Calendar
-                  </NavLink>
-                </li>
-              )}
+              <li>
+                <NavLink
+                  to="/Calendar"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-[#27ff82]" : "text-white"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
+                  }
+                >
+                  Calendar
+                </NavLink>
+              </li>
 
-              {isLoggedIn ? (
-                <li>
-                  <NavLink
-                    to="/Ask"
-                    className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 ${
-                        isActive ? "text-[#27ff82]" : "text-white"
-                      } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
-                    }
-                  >
-                    Ask
-                  </NavLink>
-                </li>
-              ) : (
-                <li>
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 ${
-                        isActive ? "text-[#27ff82]" : "text-white"
-                      } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
-                    }
-                  >
-                    Ask
-                  </NavLink>
-                </li>
-              )}
+              <li>
+                <NavLink
+                  to="/Ask"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-[#27ff82]" : "text-white"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-[#27ff82] lg:p-0`
+                  }
+                >
+                  Ask
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
