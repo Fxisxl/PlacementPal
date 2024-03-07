@@ -1,52 +1,74 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Calendar, Whisper, Popover, Badge } from "rsuite";
 
-export default function Calender() {
-  const isLoggedIn = !!localStorage.getItem("token");
-  const navigate = useNavigate();
+function getTodoList(date) {
+  const day = date.getDate();
 
-  const handleLogOut = () => {
-    // Remove token
-    localStorage.removeItem("token");
-
-    // Redirect to login pahe
-    navigate("/login");
-  };
-
-  if (!!isLoggedIn) {
+  switch (day) {
+    case 10:
+      return [
+        { time: "10:30 am", title: "Meeting" },
+        { time: "12:00 pm", title: "Lunch" },
+      ];
+    case 15:
+      return [
+        { time: "09:30 pm", title: "Products Introduction Meeting" },
+        { time: "12:30 pm", title: "Client entertaining" },
+        { time: "02:00 pm", title: "Product design discussion" },
+        { time: "05:00 pm", title: "Product test and acceptance" },
+        { time: "06:30 pm", title: "Reporting" },
+        { time: "10:00 pm", title: "Going home to walk the dog" },
+      ];
+    default:
+      return [];
   }
-  return (
-    <>
-      {isLoggedIn ? (
-        <div>
-          <h1>Navigate Links</h1>
-          <p>This is Calendar Page</p>
-          <button>
-            <Link to="/">Home</Link>
-          </button>
-          <button>
-            <Link to="/companies">Companies</Link>
-          </button>
-          <button>
-            <Link to="/resources">Resources</Link>
-          </button>
-          <button>
-            <Link to="/calendar">Calendar</Link>
-          </button>
-          <button>
-            <Link to="/ask">ASK</Link>
-          </button>
-          <button onClick={handleLogOut}>
-            <Link to="/">Logout</Link>
-          </button>
-        </div>
-      ) : (
-        <div>
-          <h1>You are not logged in</h1>
-          <button>
-            <Link to="/login">Login</Link>
-          </button>
-        </div>
-      )}
-    </>
-  );
 }
+
+const Azam = () => {
+  function renderCell(date) {
+    const list = getTodoList(date);
+    const displayList = list.filter((item, index) => index < 2);
+
+    if (list.length) {
+      const moreCount = list.length - displayList.length;
+      const moreItem = (
+        <li>
+          <Whisper
+            placement="top"
+            trigger="click"
+            speaker={
+              <Popover>
+                {list.map((item, index) => (
+                  <p key={index}>
+                    <b>{item.time}</b> - {item.title}
+                  </p>
+                ))}
+              </Popover>
+            }
+          >
+            <a>{moreCount} more</a>
+          </Whisper>
+        </li>
+      );
+
+      return (
+        <ul className="calendar-todo-list p-0 text-left list-none">
+          {displayList.map((item, index) => (
+            <li
+              className="overflow-hidden truncate whitespace-nowrap"
+              key={index}
+            >
+              <Badge className="inline-block align-top mt-2 w-3 h-3 bg-gray-500 rounded-full" />{" "}
+              <b>{item.time}</b> - {item.title}
+            </li>
+          ))}
+          {moreCount ? moreItem : null}
+        </ul>
+      );
+    }
+
+    return null;
+  }
+
+  return <Calendar bordered renderCell={renderCell} />;
+};
+export default Azam;

@@ -34,9 +34,9 @@ export default function Register() {
 
   return (
     <>
-      <div className=" w-screen h-screen bg-red-50 flex justify-center items-center">
-        <div className=" w-3/5 h-3/4 bg-white rounded-xl shadow-lg flex flex-col items-center">
-          <h1 className=" w-full h-12 flex-initial flex justify-center items-center text-xl font-semibold rounded-t-lg bg-red-400">
+      <div className=" w-screen h-screen bg-[#001e2b] flex justify-center items-center">
+        <div className=" w-3/5 h-3/4 bg-[#e3fcf7] rounded-xl shadow-lg flex flex-col items-center">
+          <h1 className=" w-full h-12 flex-initial flex justify-center items-center text-xl font-semibold rounded-t-lg bg-[#27ff82]">
             Register
           </h1>
           <form
@@ -76,13 +76,13 @@ export default function Register() {
               onChange={handleChanges}
             />
             <input
-              className=" w-1/3 h-14 mt-2 rounded-xl outline-none bg-red-400 hover:bg-red-500"
+              className=" w-1/3 h-14 mt-2 rounded-xl outline-none bg-[#27ff82] hover:bg-green-600"
               value="Next"
               type="submit"
             />
             <p className=" mt-2 text-sm ">
-              Already have an accout?{" "}
-              <Link className=" text-red-600" to="/login">
+              Already have an accout?
+              <Link className=" text-green-600" to="/login">
                 Login.
               </Link>
             </p>
